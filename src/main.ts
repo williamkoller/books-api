@@ -13,7 +13,8 @@ async function bootstrap() {
   const port = config.get<string>('port');
   const nodeEnv = config.get<string>('nodeEnv');
 
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api/v1');
+
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
   swaggerConfig(app);
