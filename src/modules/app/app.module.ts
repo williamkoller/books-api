@@ -1,10 +1,10 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import envFolderPath, { environments } from '@/config/environments';
-import { BooksModule } from '../books/books.module';
+import { BooksModule } from '@/modules/books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from '@/infra/typeorm/config/config.service';
-import { AuthModule } from '../auth/auth.module';
+import { AuthModule } from '@/modules/auth/auth.module';
 
 @Module({
   imports: [
