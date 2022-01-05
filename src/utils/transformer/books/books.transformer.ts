@@ -11,7 +11,7 @@ export const booksTransformers = (books: BookEntity[]): BooksTypeOutput[] => {
     pages: book.pages,
     release_year: book.release_year,
     publishing_company: book.publishing_company,
-    createdAt: book.createdAt,
-    updatedAt: book.updatedAt,
+    created_at: book.created_at,
+    updated_at: book.updated_at,
   }));
 };
