@@ -20,7 +20,7 @@ export class BooksController {
     private readonly loadAllBooksService: LoadAllBooksService,
   ) {}
 
-  @Post()
+  @Post('add-book')
   @HttpCode(HttpStatus.CREATED)
   @ApiResponse({
     status: HttpStatus.CREATED,
@@ -34,7 +34,7 @@ export class BooksController {
     return await this.addBookService.addBook(addBookDto);
   }
 
-  @Get()
+  @Get('load-all')
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
     status: HttpStatus.OK,
