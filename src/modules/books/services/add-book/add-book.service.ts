@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { BooksRepository } from '@/modules/books/repositories/books.repository';
-import { AddBookDto } from '../../dtos/add-book/add-book.dto';
+import { AddBookDto } from '@/modules/books/dtos/add-book/add-book.dto';
 import { BookEntity } from '@/infra/typeorm/entities/book-entity/book.entity';
 
 @Injectable()

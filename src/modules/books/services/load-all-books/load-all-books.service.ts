@@ -1,7 +1,7 @@
 import { BookEntity } from '@/infra/typeorm/entities/book-entity/book.entity';
 import { booksTransformers } from '@/utils/transformer/books/books.transformer';
 import { Injectable } from '@nestjs/common';
-import { BooksRepository } from '../../repositories/books.repository';
+import { BooksRepository } from '@/modules/books/repositories/books.repository';
 
 @Injectable()
 export class LoadAllBooksService {

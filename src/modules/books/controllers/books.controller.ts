@@ -8,9 +8,9 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { AddBookDto } from '../dtos/add-book/add-book.dto';
-import { AddBookService } from '../services/add-book/add-book.service';
-import { LoadAllBooksService } from '../services/load-all-books/load-all-books.service';
+import { AddBookDto } from '@/modules/books/dtos/add-book/add-book.dto';
+import { AddBookService } from '@/modules/books/services/add-book/add-book.service';
+import { LoadAllBooksService } from '@/modules/books/services/load-all-books/load-all-books.service';
 
 @ApiTags('books')
 @Controller('books')
