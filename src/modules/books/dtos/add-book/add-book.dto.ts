@@ -28,9 +28,9 @@ export class AddBookDto {
   pages: number;
 
   @ApiProperty()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  release_year: string;
+  release_year: number;
 
   @ApiProperty()
   @IsString()

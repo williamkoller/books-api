@@ -5,8 +5,8 @@ export type BooksTypeOutput = {
   state: string;
   price: number;
   pages: number;
-  release_year: string;
+  release_year: number;
   publishing_company: string;
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
 };
