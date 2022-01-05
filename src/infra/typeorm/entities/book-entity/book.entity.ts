@@ -18,8 +18,8 @@ export class BookEntity extends BaseEntity {
   @Column({ type: 'int4', nullable: false })
   pages: number;
 
-  @Column({ type: 'varchar', nullable: false })
-  release_year: string;
+  @Column({ type: 'int4', nullable: false })
+  release_year: number;
 
   @Column({ type: 'varchar', nullable: false })
   publishing_company: string;
