@@ -2,6 +2,8 @@ import {
   AddBookRepository,
   LoadBookByTitleRepository,
   LoadAllBooksRepository,
+  DeleteBookRepository,
+  LoadBookByIdRepository,
 } from '@/data/protocols/db/books';
 import { BookEntity } from '@/infra/typeorm/entities/book-entity/book.entity';
 import { EntityRepository, Repository } from 'typeorm';
@@ -13,11 +15,17 @@ export class BooksRepository
   implements
     AddBookRepository,
     LoadBookByTitleRepository,
-    LoadAllBooksRepository
+    LoadAllBooksRepository,
+    DeleteBookRepository,
+    LoadBookByIdRepository
 {
   public async addBook(addBookDto: AddBookDto): Promise<BookEntity> {
     const newBook = Object.assign({} as AddBookDto, addBookDto);
     return await this.save(newBook);
+  }
+
+  public async loadBookById(id: string): Promise<BookEntity> {
+    return await this.findOne({ where: { id } });
   }
 
   public async loadByTitle(title: string): Promise<BookEntity> {
@@ -28,5 +36,9 @@ export class BooksRepository
 
   public async loadAllBooks(): Promise<BookEntity[]> {
     return await this.find();
+  }
+
+  public async deleteBook(id: string): Promise<void> {
+    await this.delete(id);
   }
 }
