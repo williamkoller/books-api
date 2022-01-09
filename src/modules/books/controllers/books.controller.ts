@@ -73,7 +73,7 @@ export class BooksController {
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'the book was successfully deleted.',
+    description: 'load book by id.',
   })
   public async loadById(@Param('id') id: string): Promise<BookEntity> {
     return await this.loadBookByIdService.loadBookById(id);
