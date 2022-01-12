@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 up:
-	docker-compose -f docker-compose.postgres.yaml up -d && yarn start:dev
+	docker-compose -f docker-compose.postgres.yaml up --remove-orphans
 
 down: 
 	docker-compose -f docker-compose.postgres.yaml down

@@ -1,5 +1,23 @@
 version: '3.8'
 services:
+  main:
+    container_name: main
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run start:dev
+    environment:
+      POSTGRES_HOST: books_db
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - webnet
+    depends_on:
+      - books_db
   books_db:
     image: postgres:13.3-alpine
     container_name: books_db
@@ -10,10 +28,16 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DATABASE}
       PGDATA: ${PGDATA}
+      POSTGRES_HOST: ${POSTGRES_HOST}
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
       - books_data:/var/lib/postgresql/data
+    networks:
+      - webnet  
 
 volumes:
   books_data:
+
+networks:
+  webnet:  
