@@ -11,12 +11,13 @@ export const booksTransformers = (books: BookEntity[]): BooksTypeOutput[] => {
     pages: book.pages,
     release_year: book.release_year,
     publishing_company: book.publishing_company,
+    category: book.category,
     created_at: book.created_at,
     updated_at: book.updated_at,
   }));
 };
 
-export const bookTransformer = (book): BooksTypeOutput => {
+export const bookTransformer = (book: BookEntity): BooksTypeOutput => {
   return {
     id: book.id,
     author: book.author,
@@ -26,6 +27,7 @@ export const bookTransformer = (book): BooksTypeOutput => {
     pages: book.pages,
     release_year: book.release_year,
     publishing_company: book.publishing_company,
+    category: book.category,
     created_at: book.created_at,
     updated_at: book.updated_at,
   };
