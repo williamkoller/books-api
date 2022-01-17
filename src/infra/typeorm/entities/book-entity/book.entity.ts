@@ -1,5 +1,11 @@
-import { Column, Entity } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  OneToOne,
+} from 'typeorm';
 import { BaseEntity } from '@/infra/typeorm/entities/base-entity/base-entity';
+import { CategoryEntity } from '../category-entity/category.entity';
 
 @Entity('books')
 export class BookEntity extends BaseEntity {
@@ -23,6 +29,10 @@ export class BookEntity extends BaseEntity {
 
   @Column({ type: 'varchar', nullable: false })
   publishing_company: string;
+
+  @OneToOne(() => CategoryEntity, (categoryEntity) => categoryEntity.id)
+  @JoinTable()
+  category: CategoryEntity;
 
   constructor(partial: Partial<BookEntity>) {
     super();
