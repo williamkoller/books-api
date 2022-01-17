@@ -16,6 +16,7 @@ import { LoadAllBooksService } from '@/modules/books/services/load-all-books/loa
 import { DeleteBookService } from '@/modules/books/services/delete-book/delete-book.service';
 import { MessageOutputType } from '@/utils/types/message/message-output.type';
 import { LoadBookByIdService } from '@/modules/books/services/load-book-by-id/load-book-by-id.service';
+import { BooksTypeOutput } from '@/utils/types/books/books.type';
 
 @ApiTags('books')
 @Controller('books')
@@ -47,7 +48,7 @@ export class BooksController {
     status: HttpStatus.OK,
     description: 'load all books.',
   })
-  public async loadAll(): Promise<BookEntity[]> {
+  public async loadAll(): Promise<BooksTypeOutput[]> {
     return await this.loadAllBooksService.loadAllBooks();
   }
 
@@ -75,7 +76,7 @@ export class BooksController {
     status: HttpStatus.OK,
     description: 'load book by id.',
   })
-  public async loadById(@Param('id') id: string): Promise<BookEntity> {
+  public async loadById(@Param('id') id: string): Promise<BooksTypeOutput> {
     return await this.loadBookByIdService.loadBookById(id);
   }
 }
