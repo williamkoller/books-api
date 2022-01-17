@@ -35,7 +35,7 @@ export class BooksRepository
   }
 
   public async loadAllBooks(): Promise<BookEntity[]> {
-    return await this.find();
+    return await this.find({ relations: ['category'] });
   }
 
   public async deleteBook(id: string): Promise<void> {
