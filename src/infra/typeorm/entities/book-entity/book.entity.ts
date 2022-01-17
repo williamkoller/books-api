@@ -1,9 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  OneToOne,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
 import { BaseEntity } from '@/infra/typeorm/entities/base-entity/base-entity';
 import { CategoryEntity } from '../category-entity/category.entity';
 
@@ -30,8 +25,8 @@ export class BookEntity extends BaseEntity {
   @Column({ type: 'varchar', nullable: false })
   publishing_company: string;
 
-  @OneToOne(() => CategoryEntity, (categoryEntity) => categoryEntity.id)
-  @JoinTable()
+  @ManyToOne(() => CategoryEntity, (categoryEntity) => categoryEntity.books)
+  @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
   category: CategoryEntity;
 
   constructor(partial: Partial<BookEntity>) {
