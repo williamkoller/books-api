@@ -5,6 +5,7 @@ import { BooksModule } from '@/modules/books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from '@/infra/typeorm/config/config.service';
 import { AuthModule } from '@/modules/auth/auth.module';
+import { CategoriesModule } from '@/modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -14,8 +15,9 @@ import { AuthModule } from '@/modules/auth/auth.module';
       load: [environments],
     }),
     TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
-    forwardRef(() => BooksModule),
     forwardRef(() => AuthModule),
+    forwardRef(() => BooksModule),
+    forwardRef(() => CategoriesModule),
   ],
   controllers: [],
   providers: [],
