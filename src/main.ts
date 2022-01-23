@@ -4,6 +4,8 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { swaggerConfig } from './docs/swagger-config';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 
 async function bootstrap() {
   const logger = new Logger('Main');
@@ -16,6 +18,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1');
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalInterceptors(new LoggingInterceptor());
 
   swaggerConfig(app);
 

@@ -10,8 +10,9 @@ export class CategoryEntity extends BaseEntity {
   @Column({ type: 'varchar', nullable: false })
   description: string;
 
-  @OneToMany(() => CategoryEntity, (categoryEntity) => categoryEntity.id)
-  @JoinColumn({ referencedColumnName: 'name' })
+  @OneToMany(() => BookEntity, (bookEntity) => bookEntity.category, {
+    eager: true,
+  })
   books: BookEntity[];
 
   constructor(partial: Partial<CategoryEntity>) {
